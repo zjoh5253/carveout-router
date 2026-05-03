@@ -1,0 +1,22 @@
+name: Deploy Hooks
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  trigger-hooks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Vercel deploy hook
+        if: ${{ secrets.VERCEL_DEPLOY_HOOK_URL != '' }}
+        run: curl -fsSL -X POST "$VERCEL_DEPLOY_HOOK_URL"
+        env:
+          VERCEL_DEPLOY_HOOK_URL: ${{ secrets.VERCEL_DEPLOY_HOOK_URL }}
+
+      - name: Trigger Supabase deploy hook
+        if: ${{ secrets.SUPABASE_DEPLOY_HOOK_URL != '' }}
+        run: curl -fsSL -X POST "$SUPABASE_DEPLOY_HOOK_URL"
+        env:
+          SUPABASE_DEPLOY_HOOK_URL: ${{ secrets.SUPABASE_DEPLOY_HOOK_URL }}
