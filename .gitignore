@@ -3,3 +3,10 @@ coverage/
 .env
 .vercel/
 .DS_Store
+
+# Next.js
+.next/
+out/
+
+# Prisma
+prisma/migrations/dev.db

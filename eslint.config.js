@@ -1,21 +1,4 @@
-import js from "@eslint/js";
-import tseslint from "typescript-eslint";
-
-export default tseslint.config(
-  js.configs.recommended,
-  ...tseslint.configs.recommended,
-  {
-    files: ["**/*.ts"],
-    languageOptions: {
-      parserOptions: {
-        projectService: true
-      }
-    },
-    rules: {
-      "@typescript-eslint/no-explicit-any": "error"
-    }
-  },
-  {
-    ignores: ["dist", "coverage", "node_modules"]
-  }
-);
+// ESLint flat config is not used in this project.
+// Linting is configured via .eslintrc.json (Next.js / ESLint 8 format).
+// This file exists to avoid confusion if tooling auto-discovers it.
+export default [];
